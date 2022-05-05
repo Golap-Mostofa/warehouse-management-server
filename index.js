@@ -36,12 +36,13 @@ async function run() {
           const product = await productCollection.findOne(query)
           res.send(product)
         })
+        //post
+        app.post('/product',async(req, res) =>{
+          const newUser = req.body;
+          const result = await productCollection.insertOne(newUser)
 
-        // app.post('/additem',(req, res) =>{
-        //   const newUser = req.body;
-        //   console.log('add new user',newUser);
-        //   res.send('user data received')
-        // })
+          res.send(result)
+        })
     }
     finally {
 
